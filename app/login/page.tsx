@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import BlobBackground from '@/components/BlobBackground';
+// import TestAuth from './TestAuth';
 
 export const Login = () => {
   return (
@@ -13,7 +14,9 @@ export const Login = () => {
           </Link>
           <div className='text-2xl leading-none font-bold tracking-tighter uppercase'>Log In</div>
         </div>
-        <div className='flex w-full flex-col items-center justify-center gap-y-4 rounded-md bg-white p-8 shadow-lg'></div>
+        <div className='flex w-full flex-col items-center justify-center gap-y-4 rounded-md bg-white p-8 shadow-lg'>
+          {/* <TestAuth /> */}
+        </div>
       </div>
     </div>
   );
