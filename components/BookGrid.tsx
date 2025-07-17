@@ -1,21 +1,21 @@
 import { AnimatedTile } from './AnimatedTile';
 
-const BOOKS = [
-  { name: 'Rosy Haze', color: '#F9B9BF' },
-  { name: 'Blue Dream', color: '#A9CFFD' },
-  { name: 'Aloe Dew', color: '#9FE9E1' },
-  { name: 'Grape Juice', color: '#CABAF7' },
-  { name: 'Berry Sky', color: ['#FBC1B9', '#F3B6D4', '#D8C6F2'] },
-  { name: 'Peach Cream', color: '#FBCAB3' },
-  { name: 'Cloud Puff', color: '#D3E6FD' },
-  { name: 'Cotton Check', color: ['#B9E1FB', '#F9F7F2'] },
+const COLORS = [
+  'Rosy Haze',
+  'Blue Dream',
+  'Aloe Dew',
+  'Grape Juice',
+  'Berry Sky',
+  'Peach Cream',
+  'Cloud Puff',
+  'Cotton Check',
 ];
 
 export const BookGrid = () => {
   return (
     <div className='relative grid aspect-square w-full grid-cols-3 grid-rows-3 gap-4'>
       <AnimatedTile src='/logo/base.png' alt='logo' text='Log In' style='col-start-2 row-start-2' />
-      {BOOKS.map((book, index) => {
+      {COLORS.map((color, index) => {
         let position = index;
         const positions = [
           [1, 1],
@@ -33,8 +33,8 @@ export const BookGrid = () => {
           <AnimatedTile
             key={index}
             src={`/book/${index + 1}.jpg`}
-            alt={`${book.name} book`}
-            text={book.name}
+            alt={`${color} book`}
+            text={color}
             style={`col-start-${col} row-start-${row}`}
           />
         );

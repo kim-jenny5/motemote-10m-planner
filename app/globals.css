@@ -48,12 +48,20 @@
   /* Cotton Check */
   .bg-cotton-check {
     @apply bg-gradient-to-r;
-    background-image: linear-gradient(to right, var(--gradient-cotton-from), var(--gradient-cotton-to));
+    background-image: linear-gradient(
+      to right,
+      var(--gradient-cotton-from),
+      var(--gradient-cotton-to)
+    );
   }
 
   .text-cotton-check {
     @apply bg-gradient-to-r bg-clip-text text-transparent;
-    background-image: linear-gradient(to right, var(--gradient-cotton-from), var(--gradient-cotton-to));
+    background-image: linear-gradient(
+      to right,
+      var(--gradient-cotton-from),
+      var(--gradient-cotton-to)
+    );
   }
 }
 

@@ -1,37 +1,66 @@
 'use client';
 
 import { useState } from 'react';
-import Anime from 'react-anime';
 import Image from 'next/image';
 
 interface AnimatedTileProps {
   src: string;
   alt: string;
   text?: string;
-  position?: number[];
   style: string;
 }
 
 export const AnimatedTile = ({ src, alt, text, style: styleFromProps }: AnimatedTileProps) => {
   const [isHovered, setIsHovered] = useState(false);
+
   const logInBtn = text === 'Log In';
-  const formattedColor = logInBtn ? 'text-neutral-100' : `text-${text?.toLowerCase().replaceAll(' ', '-')}`;
+  const formattedColor = logInBtn
+    ? 'text-neutral-100'
+    : `text-${text?.toLowerCase().replaceAll(' ', '-')}`;
 
   return (
     <div
-      className={`relative col-span-1 row-span-1 ${styleFromProps} cursor-pointer`}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      className={`group relative col-span-1 row-span-1 ${styleFromProps} cursor-pointer overflow-hidden rounded-sm`}
     >
-      {isHovered ? (
-        <div className='flex h-full w-full items-center justify-center rounded-sm bg-stone-800'>
-          <div className='text-center'>
-            <div className={`${formattedColor} text-5xl font-black tracking-tight uppercase`}>{text}</div>
-            {!logInBtn && <div className='pt-2 text-2xl font-bold text-neutral-100'>Pick me!</div>}
+      {logInBtn ? (
+        <div
+          className='relative h-full w-full'
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            priority
+            className={`object-fill transition-opacity duration-300 ${
+              isHovered ? 'opacity-0' : 'opacity-100'
+            }`}
+          />
+          <div
+            className={`absolute inset-0 flex items-center justify-center rounded-full bg-stone-800 transition-opacity duration-300 ${
+              isHovered ? 'opacity-100' : 'opacity-0'
+            }`}
+          >
+            <div className='flex w-full flex-col gap-y-2 p-4 text-center'>
+              <div className='text-5xl font-bold text-neutral-100 uppercase'>Log In</div>
+            </div>
           </div>
         </div>
       ) : (
-        <Image src={src} alt={alt} fill className='rounded-sm object-fill' />
+        <>
+          <Image src={src} alt={alt} fill className='object-fill' />
+          <div className='absolute inset-0 flex items-center justify-center bg-white/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
+            <div className='flex w-full flex-col gap-y-1 p-4 text-center'>
+              <div
+                className={`${formattedColor} text-[2.75rem] leading-none font-black tracking-tight uppercase text-shadow-2xs`}
+              >
+                {text}
+              </div>
+              <div className='text-lg font-bold text-stone-900/40 uppercase'>Pick me!</div>
+            </div>
+          </div>
+        </>
       )}
     </div>
   );
