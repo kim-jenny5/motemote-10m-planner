@@ -32,9 +32,9 @@ const Grid = () => {
         return (
           <Tile
             key={index}
-            src={`/book/${index + 1}.jpg`}
-            alt={`${color} book`}
-            text={color}
+            src={`/planner/${index + 1}.jpg`}
+            alt={`${color} planner`}
+            color={color}
             style={`col-start-${col} row-start-${row}`}
           />
         );

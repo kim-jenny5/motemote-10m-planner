@@ -3,22 +3,30 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { motion } from 'motion/react';
 
 interface TileProps {
   src: string;
   alt: string;
   text?: string;
+  color?: string;
   style: string;
 }
 
-const Tile = ({ src, alt, text, style: styleFromProps }: TileProps) => {
+const Tile = ({ src, alt, text, color, style: styleFromProps }: TileProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const logInBtn = text === 'Log In';
-  const formattedColor = logInBtn
-    ? 'text-neutral-100'
-    : `text-${text?.toLowerCase().replaceAll(' ', '-')}`;
+  const formattedColor = color?.toLowerCase().replaceAll(' ', '-');
+  const textColor = logInBtn ? 'text-neutral-100' : `text-${formattedColor}`;
+
+  const router = useRouter();
+
+  const handleClick = () => {
+    sessionStorage.setItem('color', formattedColor ?? '');
+    router.push('/get-started');
+  };
 
   return (
     <motion.div
@@ -57,19 +65,21 @@ const Tile = ({ src, alt, text, style: styleFromProps }: TileProps) => {
           </Link>
         </div>
       ) : (
-        <>
+        <div className='relative h-full w-full' onClick={handleClick}>
           <Image src={src} alt={alt} fill className='object-fill' />
-          <div className='absolute inset-0 flex items-center justify-center bg-white/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
-            <div className='flex w-full flex-col gap-y-1 p-4 text-center'>
-              <div
-                className={`${formattedColor} text-[2.75rem] leading-none font-black tracking-tight uppercase text-shadow-2xs`}
-              >
-                {text}
+          <Link href='/get-started'>
+            <div className='absolute inset-0 flex items-center justify-center bg-white/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
+              <div className='flex w-full flex-col gap-y-1 p-4 text-center'>
+                <div
+                  className={`${textColor} text-[2.75rem] leading-none font-black tracking-tight uppercase text-shadow-2xs`}
+                >
+                  {color}
+                </div>
+                <div className='text-lg font-bold text-stone-900/40 uppercase'>Pick me!</div>
               </div>
-              <div className='text-lg font-bold text-stone-900/40 uppercase'>Pick me!</div>
             </div>
-          </div>
-        </>
+          </Link>
+        </div>
       )}
     </motion.div>
   );

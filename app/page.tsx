@@ -3,7 +3,7 @@ import Grid from '@/components/Grid';
 
 const Home = () => {
   return (
-    <div className='mx-auto flex h-screen w-screen max-w-5xl items-center justify-center p-8 lg:p-10 xl:p-12'>
+    <div className='page-container max-w-5xl items-center justify-center'>
       <div className='flex w-2xl flex-col items-center justify-center gap-y-4'>
         <div className='text-center text-lg leading-none tracking-tight text-stone-800'>
           Select a tile below to get started.

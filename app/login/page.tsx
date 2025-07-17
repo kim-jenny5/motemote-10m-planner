@@ -5,7 +5,7 @@ import BlobBackground from '@/components/BlobBackground';
 
 export const Login = () => {
   return (
-    <div className='mx-auto flex h-screen w-screen items-center justify-center p-8 lg:p-10 xl:p-12'>
+    <div className='page-container items-center justify-center'>
       <BlobBackground />
       <div className='flex h-full w-full max-w-md flex-col justify-center gap-y-4'>
         <div className='flex items-end justify-between'>
