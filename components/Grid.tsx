@@ -1,4 +1,4 @@
-import { Tile } from './Tile';
+import Tile from './Tile';
 
 const COLORS = [
   'Rosy Haze',
@@ -11,12 +11,12 @@ const COLORS = [
   'Cotton Check',
 ];
 
-export const Grid = () => {
+const Grid = () => {
   return (
     <div className='relative grid aspect-square w-full grid-cols-3 grid-rows-3 gap-4'>
       <Tile src='/logo/base.png' alt='logo' text='Log In' style='col-start-2 row-start-2' />
       {COLORS.map((color, index) => {
-        let position = index;
+        const position = index;
         const positions = [
           [1, 1],
           [2, 1],
@@ -42,3 +42,5 @@ export const Grid = () => {
     </div>
   );
 };
+
+export default Grid;

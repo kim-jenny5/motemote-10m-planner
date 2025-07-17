@@ -38,6 +38,7 @@ const config = [
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_', caughtErrorsIgnorePattern: '^_' },
       ],
       'unicorn/prevent-abbreviations': 'off',
+      'unicorn/filename-case': 'off',
     },
   },
   { files: ['**/*.{jsx,tsx}'], rules: { 'no-console': 'warn' } },

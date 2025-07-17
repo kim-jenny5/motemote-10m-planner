@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'motion/react';
 
 interface TileProps {
@@ -11,7 +12,7 @@ interface TileProps {
   style: string;
 }
 
-export const Tile = ({ src, alt, text, style: styleFromProps }: TileProps) => {
+const Tile = ({ src, alt, text, style: styleFromProps }: TileProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const logInBtn = text === 'Log In';
@@ -44,7 +45,8 @@ export const Tile = ({ src, alt, text, style: styleFromProps }: TileProps) => {
               isHovered ? 'opacity-0' : 'opacity-100'
             }`}
           />
-          <div
+          <Link
+            href='/login'
             className={`absolute inset-0 flex items-center justify-center rounded-full bg-stone-800 transition-opacity duration-300 ${
               isHovered ? 'opacity-100' : 'opacity-0'
             }`}
@@ -52,7 +54,7 @@ export const Tile = ({ src, alt, text, style: styleFromProps }: TileProps) => {
             <div className='flex w-full flex-col gap-y-2 p-4 text-center'>
               <div className='text-5xl font-bold text-neutral-100 uppercase'>Log In</div>
             </div>
-          </div>
+          </Link>
         </div>
       ) : (
         <>
@@ -72,3 +74,5 @@ export const Tile = ({ src, alt, text, style: styleFromProps }: TileProps) => {
     </motion.div>
   );
 };
+
+export default Tile;

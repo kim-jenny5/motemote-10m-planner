@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { Grid } from '@/components/Grid';
+import Grid from '@/components/Grid';
 
-export default function Home() {
+const Home = () => {
   return (
     <div className='mx-auto flex h-screen w-screen max-w-5xl items-center justify-center p-8 lg:p-10 xl:p-12'>
       <div className='flex w-2xl flex-col items-center justify-center gap-y-4'>
@@ -22,4 +22,6 @@ export default function Home() {
       </div>
     </div>
   );
-}
+};
+
+export default Home;
