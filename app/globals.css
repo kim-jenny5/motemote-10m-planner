@@ -3,11 +3,58 @@
 
 @theme {
   --font-pretendard: 'Pretendard Std Variable', Pretendard, sans-serif;
+
+  --color-rosy-haze: #f9b9bf;
+  --color-blue-dream: #a9cffd;
+  --color-aloe-dew: #9fe9e1;
+  --color-grape-juice: #cabaf7;
+  --color-peach-cream: #fbcab3;
+  --color-cloud-puff: #d3e6fd;
+
+  --gradient-berry-from: #fbc1b9;
+  --gradient-berry-via: #f3b6d4;
+  --gradient-berry-to: #d8c6f2;
+  --gradient-cotton-from: #f9f7f2;
+  --gradient-cotton-to: #b9e1fb;
 }
 
 @screen {
   desktop: 1024px;
   widescreen: 1440px;
+}
+
+@layer utilities {
+  /* Berry Sky */
+  .bg-berry-sky {
+    @apply bg-gradient-to-r;
+    background-image: linear-gradient(
+      to right,
+      var(--gradient-berry-from),
+      var(--gradient-berry-via),
+      var(--gradient-berry-to)
+    );
+  }
+
+  .text-berry-sky {
+    @apply bg-gradient-to-r bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      to right,
+      var(--gradient-berry-from),
+      var(--gradient-berry-via),
+      var(--gradient-berry-to)
+    );
+  }
+
+  /* Cotton Check */
+  .bg-cotton-check {
+    @apply bg-gradient-to-r;
+    background-image: linear-gradient(to right, var(--gradient-cotton-from), var(--gradient-cotton-to));
+  }
+
+  .text-cotton-check {
+    @apply bg-gradient-to-r bg-clip-text text-transparent;
+    background-image: linear-gradient(to right, var(--gradient-cotton-from), var(--gradient-cotton-to));
+  }
 }
 
 * {

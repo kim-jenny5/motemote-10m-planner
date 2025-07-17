@@ -1,62 +1,44 @@
-import Image from 'next/image';
+import { AnimatedTile } from './AnimatedTile';
 
-export default function BookGrid() {
+const BOOKS = [
+  { name: 'Rosy Haze', color: '#F9B9BF' },
+  { name: 'Blue Dream', color: '#A9CFFD' },
+  { name: 'Aloe Dew', color: '#9FE9E1' },
+  { name: 'Grape Juice', color: '#CABAF7' },
+  { name: 'Berry Sky', color: ['#FBC1B9', '#F3B6D4', '#D8C6F2'] },
+  { name: 'Peach Cream', color: '#FBCAB3' },
+  { name: 'Cloud Puff', color: '#D3E6FD' },
+  { name: 'Cotton Check', color: ['#B9E1FB', '#F9F7F2'] },
+];
+
+export const BookGrid = () => {
   return (
     <div className='relative grid aspect-square w-full grid-cols-3 grid-rows-3 gap-4'>
-      <Image
-        src='/logo/base.png'
-        alt='logo'
-        fill
-        className='col-span-1 col-start-2 row-span-1 row-start-2 object-contain'
-      />
-      <Image
-        src='/book/1.jpg'
-        alt='pink book'
-        fill
-        className='col-span-1 col-start-1 row-span-1 row-start-1 rounded-lg object-contain'
-      />
-      <Image
-        src='/book/2.jpg'
-        alt='blue book'
-        fill
-        className='col-span-1 col-start-2 row-span-1 row-start-1 rounded-lg object-contain'
-      />
-      <Image
-        src='/book/3.jpg'
-        alt='green book'
-        fill
-        className='col-span-1 col-start-3 row-span-1 row-start-1 rounded-lg object-contain'
-      />
-      <Image
-        src='/book/4.jpg'
-        alt='purple book'
-        fill
-        className='col-span-1 col-start-1 row-span-1 row-start-2 rounded-lg object-contain'
-      />
-      <Image
-        src='/book/5.jpg'
-        alt='gradient book'
-        fill
-        className='col-span-1 col-start-3 row-span-1 row-start-2 rounded-lg object-contain'
-      />
-      <Image
-        src='/book/6.jpg'
-        alt='orange book'
-        fill
-        className='col-span-1 col-start-1 row-span-1 row-start-3 rounded-lg object-contain'
-      />
-      <Image
-        src='/book/7.png'
-        alt='light blue book'
-        fill
-        className='col-span-1 col-start-2 row-span-1 row-start-3 rounded-lg object-contain'
-      />
-      <Image
-        src='/book/8.png'
-        alt='checkered book'
-        fill
-        className='col-span-1 col-start-3 row-span-1 row-start-3 rounded-lg object-contain'
-      />
+      <AnimatedTile src='/logo/base.png' alt='logo' text='Log In' style='col-start-2 row-start-2' />
+      {BOOKS.map((book, index) => {
+        let position = index;
+        const positions = [
+          [1, 1],
+          [2, 1],
+          [3, 1],
+          [1, 2],
+          [3, 2],
+          [1, 3],
+          [2, 3],
+          [3, 3],
+        ];
+        const [col, row] = positions[position];
+
+        return (
+          <AnimatedTile
+            key={index}
+            src={`/book/${index + 1}.jpg`}
+            alt={`${book.name} book`}
+            text={book.name}
+            style={`col-start-${col} row-start-${row}`}
+          />
+        );
+      })}
     </div>
   );
-}
+};
