@@ -1,4 +1,4 @@
-import { AnimatedTile } from './AnimatedTile';
+import { Tile } from './Tile';
 
 const COLORS = [
   'Rosy Haze',
@@ -11,10 +11,10 @@ const COLORS = [
   'Cotton Check',
 ];
 
-export const BookGrid = () => {
+export const Grid = () => {
   return (
     <div className='relative grid aspect-square w-full grid-cols-3 grid-rows-3 gap-4'>
-      <AnimatedTile src='/logo/base.png' alt='logo' text='Log In' style='col-start-2 row-start-2' />
+      <Tile src='/logo/base.png' alt='logo' text='Log In' style='col-start-2 row-start-2' />
       {COLORS.map((color, index) => {
         let position = index;
         const positions = [
@@ -30,7 +30,7 @@ export const BookGrid = () => {
         const [col, row] = positions[position];
 
         return (
-          <AnimatedTile
+          <Tile
             key={index}
             src={`/book/${index + 1}.jpg`}
             alt={`${color} book`}

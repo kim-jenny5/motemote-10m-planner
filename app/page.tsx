@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { BookGrid } from '@/components/BookGrid';
+import { Grid } from '@/components/Grid';
 
 export default function Home() {
   return (
@@ -8,7 +8,7 @@ export default function Home() {
         <div className='text-center text-lg leading-none tracking-tight text-stone-800'>
           Select a tile below to get started.
         </div>
-        <BookGrid />
+        <Grid />
         <div className='text-center text-4xl leading-none font-bold tracking-tighter text-stone-800 uppercase'>
           Inspired by the viral MOTEMOTE 10 minutes planner from South Korea.
         </div>

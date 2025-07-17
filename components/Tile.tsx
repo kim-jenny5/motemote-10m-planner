@@ -2,15 +2,16 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import { motion } from 'motion/react';
 
-interface AnimatedTileProps {
+interface TileProps {
   src: string;
   alt: string;
   text?: string;
   style: string;
 }
 
-export const AnimatedTile = ({ src, alt, text, style: styleFromProps }: AnimatedTileProps) => {
+export const Tile = ({ src, alt, text, style: styleFromProps }: TileProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const logInBtn = text === 'Log In';
@@ -19,7 +20,13 @@ export const AnimatedTile = ({ src, alt, text, style: styleFromProps }: Animated
     : `text-${text?.toLowerCase().replaceAll(' ', '-')}`;
 
   return (
-    <div
+    <motion.div
+      whileHover={
+        logInBtn
+          ? { scale: [1, 0.95, 1] }
+          : { rotate: [0, -0.75, 0.75, -0.75, 0.75, 0], scale: 1.05 }
+      }
+      transition={{ duration: logInBtn ? 0.6 : 0.4, ease: 'easeInOut' }}
       className={`group relative col-span-1 row-span-1 ${styleFromProps} cursor-pointer overflow-hidden rounded-sm`}
     >
       {logInBtn ? (
@@ -62,6 +69,6 @@ export const AnimatedTile = ({ src, alt, text, style: styleFromProps }: Animated
           </div>
         </>
       )}
-    </div>
+    </motion.div>
   );
 };
