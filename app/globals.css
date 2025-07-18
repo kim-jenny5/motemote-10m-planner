@@ -16,6 +16,7 @@ body {
 
 @theme {
   --font-pretendard: 'Pretendard Std Variable', Pretendard, sans-serif;
+  --font-m-plus: 'M PLUS 1 Code', monospace;
 
   --color-rosy-haze: #f9b9bf;
   --color-blue-dream: #a9cffd;
@@ -29,6 +30,9 @@ body {
   --gradient-berry-to: #d8c6f2;
   --gradient-cotton-from: #f9f7f2;
   --gradient-cotton-to: #b9e1fb;
+
+  --berry-sky-solid: #eac2d1;
+  --cotton-check-solid: #dcecf6;
 }
 
 @screen {
@@ -44,6 +48,9 @@ body {
   .text-rosy-haze {
     @apply text-rosy-haze;
   }
+  .decoration-rosy-haze {
+    @apply decoration-rosy-haze;
+  }
 
   /* BLUE DREAM */
   .bg-blue-dream {
@@ -51,6 +58,9 @@ body {
   }
   .text-blue-dream {
     @apply text-blue-dream;
+  }
+  .decoration-blue-dream {
+    @apply decoration-blue-dream;
   }
 
   /* ALOE DEW */
@@ -60,6 +70,9 @@ body {
   .text-aloe-dew {
     @apply text-aloe-dew;
   }
+  .decoration-aloe-dew {
+    @apply decoration-aloe-dew;
+  }
 
   /* GRAPE JUICE */
   .bg-grape-juice {
@@ -67,6 +80,9 @@ body {
   }
   .text-grape-juice {
     @apply text-grape-juice;
+  }
+  .decoration-grape-juice {
+    @apply decoration-grape-juice;
   }
 
   /* PEACH CREAM */
@@ -76,6 +92,9 @@ body {
   .text-peach-cream {
     @apply text-peach-cream;
   }
+  .decoration-peach-cream {
+    @apply decoration-peach-cream;
+  }
 
   /* CLOUD PUFF */
   .bg-cloud-puff {
@@ -83,6 +102,9 @@ body {
   }
   .text-cloud-puff {
     @apply text-cloud-puff;
+  }
+  .decoration-cloud-puff {
+    @apply decoration-cloud-puff;
   }
 
   /* Berry Sky */
@@ -113,6 +135,9 @@ body {
       var(--gradient-berry-to)
     );
   }
+  .decoration-berry-sky {
+    text-decoration-color: var(--berry-sky-solid);
+  }
 
   /* Cotton Check */
   .bg-cotton-check-from {
@@ -136,6 +161,9 @@ body {
       var(--gradient-cotton-from),
       var(--gradient-cotton-to)
     );
+  }
+  .decoration-cotton-check {
+    text-decoration-color: var(--cotton-check-solid);
   }
 }
 

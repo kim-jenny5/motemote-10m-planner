@@ -16,7 +16,6 @@ interface TileProps {
 
 const Tile = ({ src, alt, text, color, style: styleFromProps }: TileProps) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
 
   const logInBtn = text === 'Log In';
   const formattedColor = color?.toLowerCase().replaceAll(' ', '-');
@@ -24,19 +23,9 @@ const Tile = ({ src, alt, text, color, style: styleFromProps }: TileProps) => {
 
   const router = useRouter();
 
-  // const handleClick = () => {
-  //   sessionStorage.setItem('plannerColor', formattedColor ?? '');
-  //   router.push('/get-started');
-  // };
-  const handleClick = async () => {
-    if (isClicked) return;
-
+  const handleClick = () => {
     sessionStorage.setItem('plannerColor', formattedColor ?? '');
-    setIsClicked(true);
-
-    setTimeout(() => {
-      router.push('/get-started');
-    }, 500);
+    router.push('/welcome');
   };
 
   return (
