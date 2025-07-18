@@ -2,9 +2,8 @@
 
 import { motion } from 'motion/react';
 
-const BLOBS = [
-  {
-    name: 'rosy-haze',
+const BLOBS = {
+  'rosy-haze': {
     className: 'top-[10%] left-[10%] h-[480px] w-[480px]',
     bg: 'bg-rosy-haze',
     opacity: 'opacity-90',
@@ -13,8 +12,7 @@ const BLOBS = [
     y: [0, -300, 250, -200, 150, 0],
     duration: 70,
   },
-  {
-    name: 'blue-dream',
+  'blue-dream': {
     className: 'top-[15%] left-[65%] h-[460px] w-[460px]',
     bg: 'bg-blue-dream',
     opacity: 'opacity-80',
@@ -23,8 +21,7 @@ const BLOBS = [
     y: [0, 300, -250, 200, -150, 0],
     duration: 75,
   },
-  {
-    name: 'aloe-dew',
+  'aloe-dew': {
     className: 'top-[65%] left-[15%] h-[450px] w-[450px]',
     bg: 'bg-aloe-dew',
     opacity: 'opacity-75',
@@ -33,8 +30,7 @@ const BLOBS = [
     y: [0, -250, 200, -150, 100, 0],
     duration: 68,
   },
-  {
-    name: 'grape-juice',
+  'grape-juice': {
     className: 'top-[60%] left-[60%] h-[440px] w-[440px]',
     bg: 'bg-grape-juice',
     opacity: 'opacity-75',
@@ -43,8 +39,7 @@ const BLOBS = [
     y: [0, 300, -250, 200, -150, 0],
     duration: 72,
   },
-  {
-    name: 'peach-cream',
+  'peach-cream': {
     className: 'top-[20%] left-[40%] h-[470px] w-[470px]',
     bg: 'bg-peach-cream',
     opacity: 'opacity-65',
@@ -53,8 +48,7 @@ const BLOBS = [
     y: [0, -280, 230, -180, 120, 0],
     duration: 76,
   },
-  {
-    name: 'cloud-puff',
+  'cloud-puff': {
     className: 'top-[40%] left-[30%] h-[500px] w-[500px]',
     bg: 'bg-cloud-puff',
     opacity: 'opacity-60',
@@ -63,14 +57,34 @@ const BLOBS = [
     y: [0, -260, 210, -160, 110, 0],
     duration: 73,
   },
-];
+};
 
-const BlobBackground = () => {
+type BlobKey = keyof typeof BLOBS;
+
+interface BlobBackgroundProps {
+  color?: string;
+}
+
+const BlobBackground = ({ color }: BlobBackgroundProps) => {
+  if (color && color in BLOBS) {
+    const blob = BLOBS[color as BlobKey];
+
+    return (
+      <div className='absolute inset-0 -z-10 overflow-hidden'>
+        <motion.div
+          className={`absolute ${blob.className} ${blob.bg} scale-150 rounded-full opacity-100 blur-[180px]`}
+          animate={{ x: blob.x, y: blob.y }}
+          transition={{ duration: blob.duration, repeat: Infinity, ease: 'easeInOut' }}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className='absolute inset-0 -z-10 overflow-hidden'>
-      {BLOBS.map((blob) => (
+      {Object.entries(BLOBS).map(([name, blob]) => (
         <motion.div
-          key={blob.name}
+          key={name}
           className={`absolute ${blob.className} ${blob.bg} rounded-full ${blob.opacity} ${blob.blur}`}
           animate={{ x: blob.x, y: blob.y }}
           transition={{ duration: blob.duration, repeat: Infinity, ease: 'easeInOut' }}

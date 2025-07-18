@@ -1,17 +1,19 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import BlobBackground from '@/components/BlobBackground';
 
 const GetStarted = () => {
-  const [color, setColor] = useState<string | null>(null);
+  const [color, setColor] = useState<string>('');
 
   useEffect(() => {
-    const color = sessionStorage.getItem('color');
-    setColor(color);
+    const selectedColor = sessionStorage.getItem('plannerColor') ?? '';
+    setColor(selectedColor);
   }, []);
 
   return (
-    <div className='container'>
+    <div className={`page-container`}>
+      <BlobBackground color={color} />
       <div className='text-3xl'>{color ?? 'No color found'}</div>
     </div>
   );

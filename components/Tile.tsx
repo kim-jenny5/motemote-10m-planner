@@ -24,7 +24,7 @@ const Tile = ({ src, alt, text, color, style: styleFromProps }: TileProps) => {
   const router = useRouter();
 
   const handleClick = () => {
-    sessionStorage.setItem('color', formattedColor ?? '');
+    sessionStorage.setItem('plannerColor', formattedColor ?? '');
     router.push('/get-started');
   };
 
