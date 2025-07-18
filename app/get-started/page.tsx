@@ -8,6 +8,7 @@ const GetStarted = () => {
 
   useEffect(() => {
     const selectedColor = sessionStorage.getItem('plannerColor') ?? '';
+    console.log(selectedColor);
     setColor(selectedColor);
   }, []);
 
