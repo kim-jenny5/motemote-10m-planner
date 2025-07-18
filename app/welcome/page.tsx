@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import Image from 'next/image';
 import BlobBackground from '@/components/BlobBackground';
 import personalities from '@/components/Personalities';
 
@@ -24,19 +26,24 @@ const Welcome = () => {
   }, []);
 
   return (
-    <div className={`page-container max-w-5xl items-center justify-center`}>
+    <div className={`page-container flex max-w-5xl flex-col items-center justify-center`}>
+      <nav>
+        <Link href='/' className='h-fit w-fit'>
+          <Image src='/logo/long.png' alt='logo' width={125} height={125} />
+        </Link>
+      </nav>
       <BlobBackground color={color} />
-      <div className='flex w-md flex-col gap-y-4'>
+      <div className='flex w-md flex-col gap-y-4 text-stone-800'>
         {color && <h1>Your vibe? {blurb}</h1>}
         <div className='flex flex-col gap-y-2'>
-          <label htmlFor='name' className='block text-xl'>
+          <label htmlFor='name' className='block text-xl tracking-tight'>
             What should we call you?
           </label>
           <input
             id='name'
             type='text'
             placeholder='Your name or nickname'
-            className='w-full rounded-sm border border-black/50 bg-white px-4 py-2 text-lg focus:border-none focus:ring focus:ring-yellow-400 focus:outline-none'
+            className='text-md w-full rounded-sm bg-white px-4 py-3 shadow-md focus:border-none focus:ring-2 focus:ring-yellow-400 focus:outline-none'
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
@@ -48,7 +55,7 @@ const Welcome = () => {
       <div className='absolute bottom-4 left-0 w-full text-center'>
         <button
           onClick={() => router.push('/login')}
-          className='text-sm text-stone-600 underline hover:text-stone-700'
+          className='cursor-pointer text-sm text-stone-600 underline hover:text-stone-500'
         >
           Already have an account? Log in
         </button>
