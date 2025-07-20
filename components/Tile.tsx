@@ -2,8 +2,6 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import { motion } from 'motion/react';
 
 interface TileProps {
@@ -20,13 +18,6 @@ const Tile = ({ src, alt, text, color, style: styleFromProps }: TileProps) => {
   const logInBtn = text === 'Log In';
   const formattedColor = color?.toLowerCase().replaceAll(' ', '-');
   const textColor = logInBtn ? 'text-neutral-100' : `text-${formattedColor}`;
-
-  const router = useRouter();
-
-  const handleClick = () => {
-    sessionStorage.setItem('plannerColor', formattedColor ?? '');
-    router.push('/welcome');
-  };
 
   return (
     <motion.div
@@ -53,8 +44,8 @@ const Tile = ({ src, alt, text, color, style: styleFromProps }: TileProps) => {
               isHovered ? 'opacity-0' : 'opacity-100'
             }`}
           />
-          <Link
-            href='/login'
+
+          <div
             className={`absolute inset-0 flex items-center justify-center rounded-full bg-stone-800 transition-opacity duration-300 ${
               isHovered ? 'opacity-100' : 'opacity-0'
             }`}
@@ -62,23 +53,21 @@ const Tile = ({ src, alt, text, color, style: styleFromProps }: TileProps) => {
             <div className='flex w-full flex-col gap-y-2 p-4 text-center'>
               <div className='text-5xl font-bold text-neutral-100 uppercase'>Log In</div>
             </div>
-          </Link>
+          </div>
         </div>
       ) : (
-        <div className='relative h-full w-full' onClick={handleClick}>
+        <div className='relative h-full w-full'>
           <Image src={src} alt={alt} fill className='object-fill' />
-          <Link href='/get-started'>
-            <div className='absolute inset-0 flex items-center justify-center bg-white/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
-              <div className='flex w-full flex-col gap-y-1 p-4 text-center'>
-                <div
-                  className={`${textColor} text-[2.75rem] leading-none font-black tracking-tight uppercase text-shadow-2xs`}
-                >
-                  {color}
-                </div>
-                <div className='text-lg font-bold text-stone-900/40 uppercase'>Pick me!</div>
+          <div className='absolute inset-0 flex items-center justify-center bg-white/80 opacity-0 transition-opacity duration-300 group-hover:opacity-100'>
+            <div className='flex w-full flex-col gap-y-1 p-4 text-center'>
+              <div
+                className={`${textColor} text-[2.75rem] leading-none font-black tracking-tight uppercase text-shadow-2xs`}
+              >
+                {color}
               </div>
+              <div className='text-lg font-bold text-stone-900/40 uppercase'>Pick me!</div>
             </div>
-          </Link>
+          </div>
         </div>
       )}
     </motion.div>
