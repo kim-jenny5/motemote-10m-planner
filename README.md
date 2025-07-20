@@ -1,36 +1,65 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Digital 10-Minute Planner (Motemote Clone)
 
-## Getting Started
+A digital clone of the viral _10-Minute Planner_ by 모트모트 (Motemote), built as a personal project to explore modern frontend tools.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Overview
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+This app aims to replicate the structure and accountability of the original Motemote planner in a digital format. Users will be able to:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- Sign up / log in (OAuth via Supabase)
+- Create and manage 100-day planners
+- Use a built-in timer to log focused work sessions
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Currently, only the homepage is live. I’m actively working on auth integration and user flows.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Next.js** – file-based routing and full-stack capabilities
+- **React** – UI library
+- **TypeScript** – safer, predictable code
+- **Supabase** – auth and PostgreSQL-backed data storage
+- **Tailwind CSS** – utility-first styling
+- **Framer Motion** – smooth UI animations
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+### Why This Stack?
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Next.js** - it's the “it” frontend framework right now — powerful, fast, and widely adopted.
+- **Supabase** - quick to scaffold OAuth, backed by PostgreSQL
+- **TypeScript** - to catch errors early, write safer code, and learn what's becoming the default in many teams across the industry
+- **Tailwind CSS** - lets me style quickly with a system I’m already comfortable with.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## Tools Used
+
+- **Vercel v0** – UI prototyping
+- **ChatGPT** – idea scaffolding, debugging help
+- **Figma** – logo and design drafts ([see designs]('https://www.figma.com/design/5ZEAJm8uQ3b1ou2XizvGL9/Untitled?m=auto&t=FFeY1ZWhvpHDuFJi-1'))
+
+---
+
+## Current Progress
+
+- Homepage is scaffolded
+- OAuth setup with Supabase is in progress
+- Signup/Login pages are underway
+
+---
+
+## What's Next
+
+- Complete auth flow
+- Implement a frontend testing framework
+- Design user dashboard
+- Build planner creation and tracking tools
+- Integrate and test timer logging
+
+---
+
+Stay tuned for more! Feedback, ideas, or questions? Feel free to open an issue.
