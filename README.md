@@ -16,6 +16,12 @@ Currently, only the homepage is live. I’m actively working on auth integration
 
 ---
 
+## Live Demo
+
+👉 [Link to deployed app](https://motemote-10m-planner.vercel.app/)
+
+---
+
 ## Tech Stack
 
 - **Next.js** – file-based routing and full-stack capabilities
