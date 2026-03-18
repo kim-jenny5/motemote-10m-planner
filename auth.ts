@@ -4,6 +4,7 @@ import Credentials from 'next-auth/providers/credentials';
 import { DrizzleAdapter } from '@auth/drizzle-adapter';
 import { eq } from 'drizzle-orm';
 import bcrypt from 'bcryptjs';
+import { cookies } from 'next/headers';
 import { db } from '@/db';
 import { users } from '@/db/schema';
 
@@ -19,7 +20,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           .where(eq(users.email, profile?.email!))
           .limit(1);
 
-        if (!existing) return '/?newUser=true';
+        if (!existing) {
+          const cookieStore = await cookies();
+          const allowNew = cookieStore.get('allow_new_google')?.value === 'true';
+          if (!allowNew) return '/?newUser=true';
+          cookieStore.delete('allow_new_google');
+        }
       }
       return true;
     },

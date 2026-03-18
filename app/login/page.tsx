@@ -33,14 +33,14 @@ export const Login = () => {
               type='email'
               placeholder='Email'
               required
-              className='w-full rounded-sm bg-stone-50 px-4 py-3 text-sm shadow-sm focus:ring-1 focus:ring-stone-700 focus:outline-none'
+              className='w-full rounded-sm bg-stone-50 px-4 py-3 text-sm shadow-sm focus:ring-2 focus:ring-stone-700 focus:outline-none'
             />
             <input
               name='password'
               type='password'
               placeholder='Password'
               required
-              className='w-full rounded-sm bg-stone-50 px-4 py-3 text-sm shadow-sm focus:ring-1 focus:ring-stone-700 focus:outline-none'
+              className='w-full rounded-sm bg-stone-50 px-4 py-3 text-sm shadow-sm focus:ring-2 focus:ring-stone-700 focus:outline-none'
             />
             <button
               type='submit'
