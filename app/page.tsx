@@ -5,8 +5,8 @@ const Home = async ({ searchParams }: { searchParams: Promise<{ newUser?: string
   const { newUser } = await searchParams;
 
   return (
-    <div className='page-container max-w-5xl items-center justify-center'>
-      <div className='flex w-2xl flex-col items-center justify-center gap-y-4'>
+    <div className='page-container max-w-5xl cursor-none justify-center'>
+      <div className='my-auto flex w-2xl flex-col justify-center gap-y-4'>
         {newUser && (
           <div className='w-full rounded-md bg-yellow-50 px-4 py-3 text-center text-sm text-yellow-600'>
             Looks like you&apos;re new here! Select a tile below to get started first.
