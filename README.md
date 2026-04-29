@@ -1,4 +1,9 @@
+> [!NOTE]
+> This project is currently under construction.
+
 # Digital 10-Minute Planner (Motemote Clone)
+
+
 
 A digital clone of the viral _10-Minute Planner_ by 모트모트 (Motemote), built as a personal project to explore modern frontend tools.
 
